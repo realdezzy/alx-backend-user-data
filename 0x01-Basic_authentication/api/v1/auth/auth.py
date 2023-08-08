@@ -7,6 +7,9 @@ from typing import List, TypeVar
 
 class Auth:
     """ Auth class: contains all required for authentication"""
+    def __init__(self) -> None:
+        """Initialize Auth class"""
+        pass
 
     def require_auth(self, path: str, exclude_paths: List[str]) -> bool:
         """Checks if a path requires authentication"""
@@ -24,7 +27,13 @@ class Auth:
 
     def authorization_header(self, request=None) -> str:
         """Flask request object"""
-        return None
+        if request is None:
+            return None
+
+        if request.headers.get('Authorization'):
+            return request.headers.get('Authorization')
+        else:
+            return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """Return the current user"""
