@@ -1,0 +1,39 @@
+2023-08-09 23:18:25,324 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-08-09 23:18:25,324 - werkzeug - INFO -  * Running on http://192.168.43.135:5000/ (Press CTRL+C to quit)
+2023-08-09 23:18:31,624 - werkzeug - INFO - 127.0.0.1 - - [09/Aug/2023 23:18:31] "[33mGET /api/v1/users/me HTTP/1.1[0m" 404 -
+2023-08-09 23:20:39,905 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-08-09 23:20:39,905 - werkzeug - INFO -  * Running on http://192.168.43.135:5000/ (Press CTRL+C to quit)
+2023-08-09 23:20:43,585 - werkzeug - INFO - 127.0.0.1 - - [09/Aug/2023 23:20:43] "[33mGET /api/v1/users/me HTTP/1.1[0m" 404 -
+2023-08-09 23:20:54,015 - werkzeug - INFO - 127.0.0.1 - - [09/Aug/2023 23:20:54] "[33mGET /api/v1/users/me HTTP/1.1[0m" 404 -
+2023-08-09 23:21:50,810 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-08-09 23:21:50,810 - werkzeug - INFO -  * Running on http://192.168.43.135:5000/ (Press CTRL+C to quit)
+2023-08-09 23:21:54,680 - werkzeug - INFO - 127.0.0.1 - - [09/Aug/2023 23:21:54] "[33mGET /api/v1/users/me HTTP/1.1[0m" 404 -
+2023-08-09 23:22:07,833 - werkzeug - INFO - 127.0.0.1 - - [09/Aug/2023 23:22:07] "[33mGET /api/v1/users/me HTTP/1.1[0m" 404 -
+2023-08-10 03:23:18,443 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-08-10 03:23:18,443 - werkzeug - INFO -  * Running on http://192.168.43.135:5000/ (Press CTRL+C to quit)
+2023-08-10 03:23:43,600 - root - INFO - User request: None
+2023-08-10 03:23:43,602 - werkzeug - INFO - 127.0.0.1 - - [10/Aug/2023 03:23:43] "[33mGET /api/v1/users/me HTTP/1.1[0m" 404 -
+2023-08-10 03:29:12,043 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-08-10 03:29:12,043 - werkzeug - INFO -  * Running on http://192.168.43.135:5000/ (Press CTRL+C to quit)
+2023-08-10 03:29:17,005 - root - INFO - User request: None
+2023-08-10 03:29:17,006 - werkzeug - INFO - 127.0.0.1 - - [10/Aug/2023 03:29:17] "[33mGET /api/v1/users/me HTTP/1.1[0m" 404 -
+2023-08-10 03:29:32,762 - root - INFO - User request: None
+2023-08-10 03:29:32,763 - werkzeug - INFO - 127.0.0.1 - - [10/Aug/2023 03:29:32] "[33mGET /api/v1/users/me HTTP/1.1[0m" 404 -
+2023-08-10 03:31:51,701 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-08-10 03:31:51,702 - werkzeug - INFO -  * Running on http://192.168.43.135:5000/ (Press CTRL+C to quit)
+2023-08-10 03:31:55,084 - werkzeug - INFO - 127.0.0.1 - - [10/Aug/2023 03:31:55] "GET /api/v1/users/me HTTP/1.1" 200 -
+2023-08-10 03:42:02,048 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-08-10 03:42:02,048 - werkzeug - INFO -  * Running on http://192.168.43.135:5000/ (Press CTRL+C to quit)
+2023-08-10 03:42:09,386 - werkzeug - INFO - 127.0.0.1 - - [10/Aug/2023 03:42:09] "GET /api/v1/users/me HTTP/1.1" 200 -
+2023-08-10 04:26:16,830 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-08-10 04:26:16,831 - werkzeug - INFO -  * Running on http://192.168.43.135:5000/ (Press CTRL+C to quit)
+2023-08-10 04:26:57,883 - werkzeug - INFO - 127.0.0.1 - - [10/Aug/2023 04:26:57] "[33mGET /api/v1/auth_session/login HTTP/1.1[0m" 404 -
+2023-08-10 04:27:14,672 - werkzeug - INFO - 127.0.0.1 - - [10/Aug/2023 04:27:14] "[31m[1mGET /api/v1/users/me HTTP/1.1[0m" 401 -
