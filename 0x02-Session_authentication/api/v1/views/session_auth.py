@@ -5,3 +5,4 @@ from api.v1.views import app_views
 
 @app_views.route('/auth_session/login/', methods=['POST'], slashes=False)
 def login(request):
+    """ Login route"""

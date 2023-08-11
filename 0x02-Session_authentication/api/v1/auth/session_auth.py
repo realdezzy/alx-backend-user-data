@@ -13,7 +13,7 @@ class SessionAuth(Auth):
         """ Create a new session id"""
         if user_id is None or not isinstance(user_id, str):
             return None
-        session_id = uuid4()
+        session_id = str(uuid4())
         self.user_id_by_session_id[session_id] = user_id
 
         return session_id
@@ -22,9 +22,9 @@ class SessionAuth(Auth):
         """ Retrieve the user_id based on the session_id. """
         if session_id is None or not isinstance(session_id, str):
             return None
-        
+
         return self.user_id_by_session_id.get(session_id)
-    
+
     def current_user(self, request=None):
         """ Return the current user"""
         if request is None:
