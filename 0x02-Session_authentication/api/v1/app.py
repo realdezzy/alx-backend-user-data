@@ -23,7 +23,7 @@ if auth:
     if auth == 'basic_auth':
         from api.v1.auth.basic_auth import BasicAuth
         auth = BasicAuth()
-    elif auth == 'sesssion_auth':
+    elif auth == 'session_auth':
         from api.v1.auth.session_auth import SessionAuth
         auth = SessionAuth()
     else:
