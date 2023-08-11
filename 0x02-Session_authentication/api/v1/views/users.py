@@ -39,21 +39,6 @@ def view_one_user(user_id: str = None) -> str:
     return jsonify(user.to_json())
 
 
-# @app_views.route('/users/me', methods=['GET'], strict_slashes=False)
-# def view_me(user_id: str = None) -> str:
-#     """ GET /api/v1/users/me
-
-#     Return:
-#       - User object JSON represented
-#       - 404 if the User ID doesn't exist
-#     """
-#     user_id = request.current_user.id
-#     user = User.get(user_id)
-#     if user is None:
-#         abort(404)
-#     return jsonify(user.to_json())
-
-
 @app_views.route('/users/<user_id>', methods=['DELETE'], strict_slashes=False)
 def delete_user(user_id: str = None) -> str:
     """ DELETE /api/v1/users/:id
