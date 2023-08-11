@@ -15,6 +15,7 @@ def view_all_users() -> str:
     all_users = [user.to_json() for user in User.all()]
     return jsonify(all_users)
 
+
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 def view_one_user(user_id: str = None) -> str:
     """ GET /api/v1/users/:id
