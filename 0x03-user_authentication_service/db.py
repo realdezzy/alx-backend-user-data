@@ -34,12 +34,13 @@ class DB:
 
     def add_user(self, email: str, hashed_password: str) -> User:
         """Add a user to the database"""
-        new_user = User(email = email, hashed_password = hashed_password)
+        new_user = User(email=email, hashed_password=hashed_password)
         session = self._session
         session.add(new_user)
         session.commit()
 
         return new_user
+
     def find_user_by(self, **kwargs) -> User:
         """ Find user by keyword arguments"""
         session = self._session
@@ -54,8 +55,18 @@ class DB:
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """ Update user"""
-        user = self.find_user_by(id = user_id)
-        if not user:
+        try:
+            user = self.find_user_by(id=user_id)
+            if not user:
+                return
+
+            valid_attributes = [
+                column.name for column in User.__table__.columns]
+            for key, value in kwargs.items():
+                if key in valid_attributes:
+                    setattr(user, key, value)
+                else:
+                    raise ValueError(f"Invalid attribute: {key}")
+            self.__session.commit()
+        except NoResultFound:
             return
-        user.update(kwargs)
-        self.__session.commit()
