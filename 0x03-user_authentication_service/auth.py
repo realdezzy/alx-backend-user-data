@@ -14,9 +14,12 @@ def _hash_password(password: str) -> bytes:
     """Return a hash of the password"""
     encoded_password = password.encode(encoding='utf8', errors='strict')
     salt = gensalt()
-    hash = hashpw(encoded_password, salt)
+    hash = hashpw(password=encoded_password, salt=salt)
     return hash
 
+def _generate_uuid() -> str:
+    """ Generate a unique and return as string"""
+    return str(uuid4())
 
 class Auth:
     """Auth class to interact with the authentication database.
@@ -51,13 +54,9 @@ class Auth:
         except NoResultFound:
             return False
 
-    def _generate_uuid(self) -> str:
-        """ Generate a unique and return as string"""
-        return str(uuid4())
-
     def create_session(self, email: str) -> str:
         """ Create session id for user"""
-        id = self._generate_uuid()
+        id = _generate_uuid()
         try:
             user = self._db.find_user_by(email=email)
 
@@ -90,7 +89,7 @@ class Auth:
         try:
             user = self._db.find_user_by_email(email=email)
             if user:
-                u_id = self._generate_uuid()
+                u_id = _generate_uuid()
                 self._db.update_user(user.id, reset_token=u_id)
                 return u_id
         except NoResultFound:
