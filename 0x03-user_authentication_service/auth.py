@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Authentication Module """
+""" Authentication Module. """
 from bcrypt import gensalt, hashpw, checkpw
 from typing import Optional
 from uuid import uuid4
@@ -87,7 +87,7 @@ class Auth:
         self._db.update_user(user_id=user_id, session_id=None)
 
     def get_reset_password_token(self, email: str) -> str:
-        """ Creates and returns the reset password token """
+        """ Creates and returns the reset password token. """
         try:
             user = self._db.find_user_by_email(email=email)
             if user:
