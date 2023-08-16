@@ -12,7 +12,7 @@ from db import DB
 
 def _hash_password(password: str) -> ByteString:
     """Return a hash of the password"""
-    encoded_password: bytes = password.encode()
+    encoded_password: bytes = password.encode(encoding='utf8')
     salt: bytes = gensalt()
     return hashpw(encoded_password, salt)
 
