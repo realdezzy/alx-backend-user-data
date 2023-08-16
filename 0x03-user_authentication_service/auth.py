@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Authentication Module"""
-import bcrypt
-from typing import Optional
+from bcrypt import gensalt, hashpw
+from typing import Optional, ByteString
 from uuid import uuid4
 from user import User
 from sqlalchemy.orm.exc import NoResultFound
@@ -12,8 +12,9 @@ from db import DB
 
 def _hash_password(password: str) -> bytes:
     """Return a hash of the password"""
-    salt = bcrypt.gensalt()
-    return bcrypt.hashpw(password.encode(), salt)
+    encoded_password: bytes = password.encode()
+    salt: bytes = gensalt()
+    return hashpw(encoded_password, salt)
 
 
 class Auth:
