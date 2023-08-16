@@ -7,6 +7,7 @@ from flask import (
     redirect,
     jsonify,
     make_response)
+from typing import Dict
 from auth import Auth
 
 AUTH = Auth()
@@ -14,14 +15,14 @@ AUTH = Auth()
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'], strict_slashes=True)
-def hello():
+@app.route('/', methods=['GET'], strict_slashes=False)
+def index() -> Dict:
     """ App root"""
     return jsonify({"message": "Bienvenue"})
 
 
 @app.route('/users/', methods=['POST'], strict_slashes=False)
-def users():
+def users() -> Dict:
     """ Register user """
     email = request.form.get('email')
     password = request.form.get('password')
@@ -36,7 +37,7 @@ def users():
 
 
 @app.route('/profile/', methods=['GET'], strict_slashes=False)
-def profile():
+def profile() -> Dict:
     """ Profile route """
     session_id = request.cookies.get('session_id')
     if session_id is None:
@@ -49,7 +50,7 @@ def profile():
 
 
 @app.route('/sessions/', methods=['POST'], strict_slashes=False)
-def login():
+def login() -> Dict:
     """ login user"""
     email = request.form.get('email')
     password = request.form.get('password')
@@ -66,7 +67,7 @@ def login():
 
 
 @app.route('/sessions/', methods=['DELETE'], strict_slashes=False)
-def logout():
+def logout() -> Dict:
     """ Logout user"""
     session_id = request.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)

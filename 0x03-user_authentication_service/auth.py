@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Authentication Module"""
-from bcrypt import gensalt, hashpw
+from bcrypt import gensalt, hashpw, checkpw
 from typing import Optional, ByteString
 from uuid import uuid4
 from user import User
@@ -10,7 +10,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from db import DB
 
 
-def _hash_password(password: str) -> bytes:
+def _hash_password(password: str) -> ByteString:
     """Return a hash of the password"""
     encoded_password: bytes = password.encode()
     salt: bytes = gensalt()
@@ -40,7 +40,7 @@ class Auth:
         """Check if the password is valid"""
         try:
             existing_user = self._db.find_user_by(email=email)
-            valid = bcrypt.checkpw(
+            valid = checkpw(
                 password.encode(),
                 existing_user.hashed_password)
             if valid:
