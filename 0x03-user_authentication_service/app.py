@@ -70,13 +70,16 @@ def login() -> Response:
 def logout() -> Response:
     """ Logout user"""
     session_id = request.cookies.get('session_id')
-    user = AUTH.get_user_from_session_id(session_id)
-    if user:
-        AUTH.destroy_session(user.id)
-        response = make_response(redirect(url_for('index')))
-        response.set_cookie('session_id', '')
-        return response
-    else:
+    try:
+        user = AUTH.get_user_from_session_id(session_id)
+        if user:
+                AUTH.destroy_session(user.id)
+                response = make_response(redirect(url_for('index')))
+                response.set_cookie('session_id', '')
+                return response
+        else:
+            abort(403)
+    except Exception:
         abort(403)
 
 
