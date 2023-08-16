@@ -95,7 +95,7 @@ class Auth:
             return u_id
         except NoResultFound:
             raise ValueError()
-    
+
     def update_password(self, reset_token: str, password: str) -> None:
         """ Update password. """
         try:
