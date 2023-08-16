@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Authentication Module"""
+""" Authentication Module """
 from bcrypt import gensalt, hashpw, checkpw
 from typing import Optional
 from uuid import uuid4

@@ -8,7 +8,6 @@ from flask import (
     jsonify,
     Response,
     make_response)
-from typing import Dict, Any, TypeAlias
 from auth import Auth
 
 AUTH = Auth()
@@ -16,7 +15,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
-def index() -> Response:
+def index() -> str:
     """ App root"""
     return jsonify({"message": "Bienvenue"})
 
