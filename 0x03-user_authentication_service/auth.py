@@ -17,6 +17,7 @@ def _hash_password(password: str) -> bytes:
     hash = hashpw(password=encoded_password, salt=salt)
     return hash
 
+
 def _generate_uuid() -> str:
     """ Generate a unique and return as string"""
     return str(uuid4())
