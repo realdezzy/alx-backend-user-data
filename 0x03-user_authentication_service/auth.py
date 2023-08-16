@@ -71,7 +71,7 @@ class Auth:
 
     def get_user_from_session_id(
             self,
-            session_id: str) -> Optional[User | None]:
+            session_id: str) -> Optional[User]:
         """ Get user from session_id. """
         try:
             user = self._db.find_user_by(session_id=session_id)
@@ -90,9 +90,18 @@ class Auth:
         """ Creates and returns the reset password token. """
         try:
             user = self._db.find_user_by_email(email=email)
-            if user:
-                u_id = _generate_uuid()
-                self._db.update_user(user.id, reset_token=u_id)
-                return u_id
+            u_id = _generate_uuid()
+            self._db.update_user(user.id, reset_token=u_id)
+            return u_id
+        except NoResultFound:
+            raise ValueError()
+    
+    def update_password(self, reset_token: str, password: str) -> None:
+        """ Update password. """
+        try:
+            user = self._db.find_user_by(reset_token=reset_token)
+            hashed_password = _hash_password(password)
+            self._db.update_user(user.id, hashed_password=hashed_password)
+
         except NoResultFound:
             raise ValueError()

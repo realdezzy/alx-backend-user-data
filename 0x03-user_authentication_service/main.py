@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Test Module."""
-# import requests
+import requests
 
 EMAIL = "guillaume@holberton.io"
 PASSWD = "b4l0u"

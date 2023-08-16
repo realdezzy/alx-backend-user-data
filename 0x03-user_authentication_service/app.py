@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
-def index() -> str:
+def index() -> Response:
     """ App root route. """
     return jsonify({"message": "Bienvenue"})
 
@@ -57,10 +57,10 @@ def login() -> Response:
     is_valid_user = AUTH.valid_login(email, password)
     if is_valid_user:
         session_id = AUTH.create_session(email)
-        resp = make_response()
-        resp.set_cookie("session_id", session_id)
-        return jsonify(
+        resp = jsonify(
             {"email": "{}".format(email), "message": "logged in"})
+        resp.set_cookie("session_id", session_id)
+        return resp
     else:
         abort(401)
 
@@ -74,6 +74,34 @@ def logout() -> Response:
         AUTH.destroy_session(user.id)
         redirect('/')
     else:
+        abort(403)
+
+
+@app.route('/reset_password/', methods=['POST'], strict_slashes=False)
+def get_reset_password_token() -> Response:
+    """ Generate password token. """
+    email = request.form.get('email')
+    try:
+        token = AUTH.get_reset_password_token(email)
+        return jsonify({"email": "{}".format(email),
+                        "reset_token": "{}".format(token)})
+    except ValueError:
+        abort(403)
+
+
+@app.route('/reset_password/', methods=['PUT'], strict_slashes=False)
+def update_password() -> Response:
+    """ Update password. """
+    email = request.form.get('email')
+    reset_token = request.form.get('reset_token')
+    new_password = request.form.get('new_password')
+
+    try:
+        AUTH.update_password(
+            reset_token=reset_token, password=new_password)
+        return jsonify({"email": "{}".format(email),
+                        "message": "Password updated"})
+    except ValueError:
         abort(403)
 
 
