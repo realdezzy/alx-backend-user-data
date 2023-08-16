@@ -10,7 +10,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from db import DB
 
 
-def _hash_password(password: str) -> ByteString:
+def _hash_password(password: str) -> bytes:
     """Return a hash of the password"""
     encoded_password: bytes = password.encode(encoding='utf8')
     salt: bytes = gensalt()
